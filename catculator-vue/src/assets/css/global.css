@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "orbitron bold";
+    src: url("../font/orbitron-bold.otf");
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
