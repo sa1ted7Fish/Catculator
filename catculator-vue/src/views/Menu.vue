@@ -16,6 +16,8 @@
         </div>
       </div>
   </div>
+  <el-button class="btn btn-back" type="primary" @click="toHome">返回</el-button>
+  <el-button class="btn btn-ok" type="success" @click="toStatistic">确定</el-button>
 </template>
 
 <script>
@@ -33,6 +35,10 @@ export default {
     },
     toIrregularCost() {
       this.$router.push('/irregular-cost')
+    },
+    toStatistic() {
+
+      this.$router.push('/statistic')
     },
   }
 }
@@ -53,10 +59,21 @@ export default {
   }
   .card div{
     width: 80%;
-    height: 80%;
+    height: 60%;
     border: 4px solid black;
   }
   .card div:hover{
     transform: scale(1.05, 1.05);
+  }
+  .btn{
+    position: absolute;
+    bottom: 5%;
+    width: 120px;
+  }
+  .btn-back{
+    left: 40%;
+  }
+  .btn-ok{
+    right: 40%;
   }
 </style>

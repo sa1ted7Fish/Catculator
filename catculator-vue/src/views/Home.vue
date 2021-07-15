@@ -20,7 +20,6 @@ export default {
   name: "Home",
   methods: {
     toMenu() {
-      this.axios.get('/api/home');
       this.$router.push('/menu');
     }
   }

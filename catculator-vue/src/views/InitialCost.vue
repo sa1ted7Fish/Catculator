@@ -57,9 +57,9 @@
         </template>
       </el-dialog>
     </div>
-    <el-button class="btn-add" type="primary" @click="add">新增</el-button>
-    <el-button class="btn-ok"  type="success" @click="ok">确定</el-button>
   </div>
+  <el-button class="btn btn-add" type="primary" @click="add">新增</el-button>
+  <el-button class="btn btn-ok"  type="success" @click="ok">确定</el-button>
 </template>
 
 <script>
@@ -134,14 +134,15 @@ export default {
   margin: 20px;
   box-shadow: 0 0 15px darkgray;
 }
-.btn-add{
+.btn{
   position: absolute;
   bottom: 5%;
+  width: 120px;
+}
+.btn-add{
   left: 40%;
 }
 .btn-ok{
-  position: absolute;
-  bottom: 5%;
   right: 40%;
 }
 </style>

@@ -12,5 +12,4 @@ public interface InitialCostService {
     int addInitialCost(String sessionId, InitialCost initialCost);
     int updateInitialCost(String sessionId, InitialCost initialCost);
     int deleteInitialCost(String sessionId, int id);
-
 }

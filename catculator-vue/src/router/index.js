@@ -38,6 +38,11 @@ const routes = [
     name: 'IrregularCost',
     component: () => import('@/views/IrregularCost')
   },
+  {
+    path: '/statistic',
+    name: 'Statistic',
+    component: () => import('@/views/Statistic')
+  },
 ]
 
 const router = createRouter({
