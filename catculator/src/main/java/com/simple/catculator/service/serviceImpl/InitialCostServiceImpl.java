@@ -5,30 +5,53 @@ import com.simple.catculator.domain.InitialCost;
 import com.simple.catculator.service.InitialCostService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class InitialCostServiceImpl implements InitialCostService {
 
-    List<InitialCost> retList = new ArrayList<>();
-    int index = 0;
+    Map<String, List<InitialCost>> initialCostMap = new HashMap<>();
+    Map<String, Integer> initialCostIndexMap = new HashMap<>();
 
     @Override
-    public List<InitialCost> getInitialCostList() {
-        return retList;
+    public void addNewList(String sessionId) {
+        int index = 0;
+        List<InitialCost> initialCostList = new ArrayList<>();
+        initialCostMap.put(sessionId, initialCostList);
+        initialCostIndexMap.put(sessionId, index);
     }
 
     @Override
-    public int addInitialCost(InitialCost initialCost) {
-        initialCost.setId(index);
-        index++;
-        retList.add(initialCost);
+    public void removeDeprecatedList(String sessionId) {
+        initialCostMap.remove(sessionId);
+    }
+
+    @Override
+    public List<InitialCost> getInitialCostList(String sessionId) {
+        return initialCostMap.get(sessionId);
+    }
+
+    @Override
+    public int addInitialCost(String sessionId, InitialCost initialCost) {
+        int tmpIndex = initialCostIndexMap.get(sessionId);
+        List<InitialCost> tmpList = initialCostMap.get(sessionId);
+
+        initialCost.setId(tmpIndex);
+        initialCostIndexMap.put(sessionId, ++tmpIndex);
+
+        tmpList.add(initialCost);
+        initialCostMap.put(sessionId, tmpList);
+
         return 0;
     }
 
     @Override
-    public int updateInitialCost(InitialCost initialCost) {
-        for (InitialCost item: retList) {
+    public int updateInitialCost(String sessionId, InitialCost initialCost) {
+        List<InitialCost> tmpList = initialCostMap.get(sessionId);
+
+        for (InitialCost item: tmpList) {
             if (item.id == initialCost.id) {
                 item.setProductName(initialCost.getProductName());
                 item.setUnitPrice(initialCost.getUnitPrice());
@@ -39,8 +62,10 @@ public class InitialCostServiceImpl implements InitialCostService {
     }
 
     @Override
-    public int deleteInitialCost(int id) {
-        retList.removeIf(item -> item.id == id);
+    public int deleteInitialCost(String sessionId, int id) {
+        List<InitialCost> tmpList = initialCostMap.get(sessionId);
+
+        tmpList.removeIf(item -> item.id == id);
         return 0;
     }
 }
