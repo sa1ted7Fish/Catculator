@@ -39,6 +39,11 @@ const routes = [
     component: () => import('@/views/IrregularCost')
   },
   {
+    path: '/deposit',
+    name: 'Deposit-MonthlyPay',
+    component: () => import('@/views/Deposit-MonthlyPay')
+  },
+  {
     path: '/statistic',
     name: 'Statistic',
     component: () => import('@/views/Statistic')

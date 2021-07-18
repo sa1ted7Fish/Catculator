@@ -1,5 +1,6 @@
 package com.simple.catculator.util;
 
+import com.simple.catculator.service.DepositService;
 import com.simple.catculator.service.InitialCostService;
 import com.simple.catculator.service.IrregularCostService;
 import com.simple.catculator.service.MonthlyCostService;
@@ -23,11 +24,13 @@ public class SessionsListener implements HttpSessionListener {
         InitialCostService initialCostService = (InitialCostService) this.getObjectFromApplication(session.getServletContext(), "initialCostServiceImpl");
         MonthlyCostService monthlyCostService = (MonthlyCostService) this.getObjectFromApplication(session.getServletContext(), "monthlyCostServiceImpl");
         IrregularCostService irregularCostService = (IrregularCostService) this.getObjectFromApplication(session.getServletContext(), "irregularCostServiceImpl");
+        DepositService depositService = (DepositService) this.getObjectFromApplication(session.getServletContext(), "depositServiceImpl");
 
         if (session.isNew()) {
             initialCostService.addNewList(sessionId);
             monthlyCostService.addNewList(sessionId);
             irregularCostService.addNewList(sessionId);
+            depositService.addNewItem(sessionId);
         }
     }
 
@@ -39,10 +42,12 @@ public class SessionsListener implements HttpSessionListener {
         InitialCostService initialCostService = (InitialCostService) this.getObjectFromApplication(session.getServletContext(), "initialCostServiceImpl");
         MonthlyCostService monthlyCostService = (MonthlyCostService) this.getObjectFromApplication(session.getServletContext(), "monthlyCostServiceImpl");
         IrregularCostService irregularCostService = (IrregularCostService) this.getObjectFromApplication(session.getServletContext(), "irregularCostServiceImpl");
+        DepositService depositService = (DepositService) this.getObjectFromApplication(session.getServletContext(), "depositServiceImpl");
 
         initialCostService.removeDeprecatedList(sessionId);
         monthlyCostService.removeDeprecatedList(sessionId);
         irregularCostService.removeDeprecatedList(sessionId);
+        depositService.removeDeprecatedItem(sessionId);
     }
 
     private Object getObjectFromApplication(ServletContext servletContext, String beanName){

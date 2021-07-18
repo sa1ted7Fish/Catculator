@@ -2,17 +2,22 @@
   <div class="menu">
       <div class="card card-initial-cost">
         <div class="initial-cost" @click="toInitialCost">
-          初始支出
+          <div class="card-title">初始<br>支出</div>
         </div>
       </div>
       <div class="card card-monthly-cost">
         <div class="monthly-cost" @click="toMonthlyCost">
-          每月支出
+          <div class="card-title">每月<br>支出</div>
         </div>
       </div>
       <div class="card card-irregular-cost">
         <div class="irregular-cost" @click="toIrregularCost">
-          不定期支出
+          <div class="card-title">不定期<br>支出</div>
+        </div>
+      </div>
+      <div class="card card-deposit">
+        <div class="deposit" @click="toDeposit">
+          <div class="card-title">存款<br>&<br>月收入</div>
         </div>
       </div>
   </div>
@@ -36,8 +41,10 @@ export default {
     toIrregularCost() {
       this.$router.push('/irregular-cost')
     },
+    toDeposit() {
+      this.$router.push('/deposit')
+    },
     toStatistic() {
-
       this.$router.push('/statistic')
     },
   }
@@ -58,12 +65,30 @@ export default {
     align-items: center;
   }
   .card div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80%;
     height: 60%;
-    border: 4px solid black;
+    font-size: 28px;
+    color: #14213d;
+    text-align: center;
+    font-family: "Microsoft YaHei UI", serif, sans-serif;
   }
   .card div:hover{
     transform: scale(1.05, 1.05);
+  }
+  .initial-cost{
+    background: #ffadad;
+  }
+  .monthly-cost{
+    background: #caffbf;
+  }
+  .irregular-cost{
+    background: #9bf6ff;
+  }
+  .deposit{
+    background: #a0c4ff;
   }
   .btn{
     position: absolute;

@@ -101,7 +101,6 @@ export default {
       }
     },
     handleEdit($index, row) {
-      console.log($index, row)
       this.form = JSON.parse(JSON.stringify(row));
       this.dialogFormVisible = true;
     },

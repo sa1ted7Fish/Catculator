@@ -26,6 +26,7 @@ public class InitialCostServiceImpl implements InitialCostService {
     @Override
     public void removeDeprecatedList(String sessionId) {
         initialCostMap.remove(sessionId);
+        initialCostIndexMap.remove(sessionId);
     }
 
     @Override

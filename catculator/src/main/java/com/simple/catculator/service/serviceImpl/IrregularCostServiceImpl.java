@@ -25,6 +25,7 @@ public class IrregularCostServiceImpl implements IrregularCostService {
     @Override
     public void removeDeprecatedList(String sessionId) {
         irregularCostMap.remove(sessionId);
+        irregularCostIndexMap.remove(sessionId);
     }
 
     @Override

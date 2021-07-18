@@ -1,8 +1,8 @@
 <template>
   <div class="header">
     <span>Ca<span style="color: crimson">t</span>culator</span>
-    <div class="btn-nav btn-nav-home btn-current" @click="toHome" ref="btnHome"><i class="fa fa-home"></i>&nbsp;Home</div>
-    <div class="btn-nav btn-nav-about"  @click="toAbout" ref="btnAbout"><i class="fa fa-info-circle"></i>&nbsp;About</div>
+    <div class="btn-nav btn-nav-home btn-current" id="btn-nav-home" @click="toHome" ref="btnHome"><i class="fa fa-home"></i>&nbsp;Home</div>
+    <div class="btn-nav btn-nav-about" id="btn-nav-about" @click="toAbout" ref="btnAbout"><i class="fa fa-info-circle"></i>&nbsp;About</div>
   </div>
 </template>
 
@@ -11,9 +11,13 @@ export default {
   name: "Header",
   methods: {
     toHome() {
+      document.getElementById("btn-nav-home").classList.add("btn-current");
+      document.getElementById("btn-nav-about").classList.remove("btn-current");
       this.$router.push('/');
     },
     toAbout() {
+      document.getElementById("btn-nav-about").classList.add("btn-current");
+      document.getElementById("btn-nav-home").classList.remove("btn-current");
       this.$router.push('/about');
     },
   }

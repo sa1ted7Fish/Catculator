@@ -25,6 +25,7 @@ public class MonthlyCostServiceImpl implements MonthlyCostService {
     @Override
     public void removeDeprecatedList(String sessionId) {
         monthlyCostMap.remove(sessionId);
+        monthlyCostIndexMap.remove(sessionId);
     }
 
     @Override
